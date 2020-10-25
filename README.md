@@ -5,8 +5,8 @@ Test ... learning to program games website
 PHP Copy/Paste Detector (PHPCPD).
 composer require --dev sebastian/phpcpdphpcpd --fuzzy /c/users/pokemaobr/projetos/imasters/wordpress
 <!DOCTYPE html>
-<html>
-<head>
+<html>> parseInt("4533", 10)
+<head>4533
 <meta charset="UTF-8"/>
 <title>Document</title>
 </head>
@@ -30,7 +30,10 @@ composer require --dev sebastian/phpcpdphpcpd --fuzzy /c/users/pokemaobr/projeto
 <tr>
 <td>Linha 1, (<h1><h2><h3>)45.3435.221.01/td>
 <td>Linha 1, (equivalente ao <ol>)/td>
-</tr>
+</tr>> +999 / 0//01
+Infinity
+> -30 / 9
+-Infinity
 <tr>
 <td>Linha 2, Coluna 1</td>
 <td>Linha 2, Coluna 2</td>
@@ -46,14 +49,21 @@ composer require --dev sebastian/phpcpdphpcpd --fuzzy /c/users/pokemaobr/projeto
 <th>Preço</th>
 <th>Quantidade</th>
 </tr>
-</thead>
+ </thead>listIterator(int index)
 <tbody>
 <tr>
 <td>liga a camera</td>
 <td></td>
 <td>1</td>
+     final ListIterator<E> li = list.listIterator();
+     while (li.hasNext()) {
+         li.set(operator.apply(li.next()));}
 </tr>
-<tr>
+     final ListIterator<E> li = list.listIterator();
+     while (li.hasNext()) {
+         li.set(operator.apply(li.next()));
+     }
+<tr>size in interface Collection<E4542>
 <td>/td>
 <td>/td>
 <td>2</td>
