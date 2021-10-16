@@ -1,4 +1,172 @@
 # Fall-Game-tast
+ package login;
+
+    import cadastro.TelaCadastro;
+    import javax.swing.JOptionPane;
+    import view.TelaPrincipal;
+    import model.dao.UsuarioDAO;
+
+    public class TelaLogin extends javax.swing.JFrame {
+
+        public TelaLogin() {
+            initComponents();
+
+        }
+
+        @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+        private void initComponents() {
+
+            jPanel1 = new javax.swing.JPanel();
+            txt_user = new javax.swing.JLabel();
+            txt_senha = new javax.swing.JLabel();
+            campo_usuario = new javax.swing.JTextField();
+            campo_senha = new javax.swing.JPasswordField();
+            btn_logar = new javax.swing.JButton();
+            btn_cadastrar = new javax.swing.JButton();
+
+            setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+            jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+            txt_user.setText("Usuario:");
+
+            txt_senha.setText("Senha:");
+
+            campo_usuario.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    campo_usuarioActionPerformed(evt);
+                }
+            });
+
+            btn_logar.setText("Entrar");
+            btn_logar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btn_logarActionPerformed(evt);
+                }
+            });
+
+            btn_cadastrar.setText("Cadastrar");
+            btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btn_cadastrarActionPerformed(evt);
+                }
+            });
+
+            javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+            jPanel1.setLayout(jPanel1Layout);
+            jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(76, 76, 76)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txt_senha)
+                                .addComponent(txt_user))
+                            .addGap(43, 43, 43)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(campo_senha, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                                .addComponent(campo_usuario))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(6, 6, 6)
+                            .addComponent(btn_logar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                            .addComponent(btn_cadastrar)
+                            .addGap(85, 85, 85))))
+            );
+            jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(115, 115, 115)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_user)
+                        .addComponent(campo_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(41, 41, 41)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_senha)
+                        .addComponent(campo_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_logar)
+                        .addComponent(btn_cadastrar))
+                    .addGap(35, 35, 35))
+            );
+
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+            getContentPane().setLayout(layout);
+            layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+            layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            );
+
+            pack();
+        }// </editor-fold>                        
+
+        private void campo_usuarioActionPerformed(java.awt.event.ActionEvent evt) {                                              
+            // TODO add your handling code here:
+        }                                             
+
+        private void btn_logarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+
+           //instancie a classe onde está o checkLogin, pois ele pedia para criar um metodo checkLogin e o metodo já existe
+
+            UsuarioDAO dao = new UsuarioDAO();
+
+       String strUsuario = campo_usuario.getText();
+       String strSenha = new String(campo_senha.getPassword());
+
+    if(dao.checkLogin(strUsuario, strSenha)){
+
+    TelaPrincipal tela = new TelaPrincipal();
+    tela.setVisible(true);
+    dispose();
+
+
+}else{
+    JOptionPane.showMessageDialog(null, "Dados incorretos!");
+}
+
+        }                                         
+
+        private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {                                              
+           new TelaCadastro().setVisible(true);
+            dispose();
+        }                                             
+
+        public static void main(String args[]) {
+
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(TelaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+
+
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new TelaLogin().setVisible(true);
+                }
+            });
+        }
+
 Test ... learning to program games website
 <p>Cod.block.dd3429.atived.block
  .</p>/c/users/pokemaobr/projetos/imasters/wordpress
