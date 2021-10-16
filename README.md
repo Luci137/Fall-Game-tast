@@ -1,4 +1,103 @@
-# Fall-Game-tast
+  // The test plugin
+  if (testPlugins != null) {
+    for (int i = 0; i < testPlugins.length; i++) {
+      Plugin plugin = testPlugins[i];
+      plugin.disconnect();
+    }
+  }
+  // The test plugin
+  if (coosPlugins != null) {
+    for (int i = 0; i < coosPlugins.length; i++) {
+      Plugin plugin = coosPlugins[i];
+      plugin.disconnect();
+    }
+  }
+  coos.stop();
+}
+origin: org.coosproject.extender/coos-extender
+OSGICoosPluginContainer.stop()
+public void stop() throws Exception {
+  LOG.info("OSGi plugin container stopping [" + this.bundle.getSymbolicName() + "]");
+  for (final Plugin plugin : this.plugins) {
+    plugin.disconnect();
+  }
+  LOG.info("OSGi plugin container stopped [" + this.bundle.getSymbolicName() + "]");
+}
+origin: org.coosproject.extender/coos-extender
+OSGICoosPluginContainer.createPlugins(...)
+private void createPlugins(final InputStream pluginDef) throws Exception {
+  final List<Plugin> connectedPlugins = new ArrayList<Plugin>();
+  try {
+    final Plugin[] newPlugins = PluginFactory.createPlugins(pluginDef, this);
+    for (final Plugin plugin : newPlugins) {
+      startPlugin(plugin);
+      connectedPlugins.add(plugin);
+    }
+  } catch (final Exception ex) {
+    for (final Plugin plugin : connectedPlugins) {
+      plugin.disconnect();
+    }
+    throw ex;
+  }
+  this.plugins.addAll(connectedPlugins);
+}
+protected void tearDown() throws Exception {
+  // The test plugin
+  if (testPlugins != null) {
+    for (int i = 0; i < testPlugins.length; i++) {
+      Plugin plugin = testPlugins[i];
+      plugin.disconnect();
+    }
+  }
+  // The test plugin
+  if (coosPlugins != null) {
+    for (int i = 0; i < coosPlugins.length; i++) {
+      Plugin plugin = coosPlugins[i];
+      plugin.disconnect();
+    }
+  }
+  coos.stop();
+}
+origin: org.coosproject.extender/coos-extender
+OSGICoosPluginContainer.stop()
+public void stop() throws Exception {
+  LOG.info("OSGi plugin container stopping [" + this.bundle.getSymbolicName() + "]");
+  for (final Plugin plugin : this.plugins) {
+    plugin.disconnect();
+  }
+  LOG.info("OSGi plugin container stopped [" + this.bundle.getSymbolicName() + "]");
+}
+origin: org.coosproject.extender/coos-extender
+OSGICoosPluginContainer.createPlugins(...)
+private void createPlugins(final InputStream pluginDef) throws Exception {
+  final List<Plugin> connectedPlugins = new ArrayList<Plugin>();
+  try {
+    final Plugin[] newPlugins = PluginFactory.createPlugins(pluginDef, this);
+    for (final Plugin plugin : newPlugins) {
+      startPlugin(plugin);
+      connectedPlugins.add(plugin);
+    }
+  } catch (final Exception ex) {
+    for (final Plugin plugin : connectedPlugins) {
+      plugin.disconnect();
+    }
+    throw ex;
+  }
+  this.plugins.addAll(connectedPlugins);
+}
+origin: org.coosproject.messaging/messaging-j2se
+COOSActivator.stop(...)
+public void stop(BundleContext bundleContext) throws Exception {
+  if (coos != null) {
+    coos.stop();
+    logger.info("Coos OSGI stopped");
+  }
+  for (Plugin plugin : plugins) {
+    plugin.disconnect();
+  }
+  logger.info("Plugin OSGI stopped");
+}
+
 Test ... learning to program games website
 <p>Cod.block.dd3429.atived.block
  .</p>/c/users/pokemaobr/projetos/imasters/wordpress
